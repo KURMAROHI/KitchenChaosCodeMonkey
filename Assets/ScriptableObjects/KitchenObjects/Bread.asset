@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de0a6f20eca6ed47a40abcb24506537, type: 3}
+  m_Name: Bread
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 8819735431547690694, guid: 285435f38df3c534dbac3d3804921e94, type: 3}
+  Spritee: {fileID: 21300000, guid: 77b28124b8bda494381c80bd5aa42c22, type: 3}
+  ObjectName: Bread
