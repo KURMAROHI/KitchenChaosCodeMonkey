@@ -6,7 +6,7 @@ public class KitchenObject : MonoBehaviour
     [SerializeField] private KitchenObjects _kitchenObjects;
     private IKitchenObjectParent _kitchenObjectParent;
 
-    public KitchenObjects GetKitchenObject()
+    public KitchenObjects GetKitchenObjectSO()
     {
         return _kitchenObjects;
     }
@@ -19,7 +19,7 @@ public class KitchenObject : MonoBehaviour
         }
 
         this._kitchenObjectParent = kitchenObjectParent;
-        if(this._kitchenObjectParent.HasKitchenObject())
+        if (this._kitchenObjectParent.HasKitchenObject())
         {
             Debug.LogError("already Counter Contains Kitchen Object");
         }
@@ -39,6 +39,14 @@ public class KitchenObject : MonoBehaviour
     {
         _kitchenObjectParent.ClearKitchenObject();
         Destroy(gameObject);
+    }
+
+    public static KitchenObject SpawnKitchenObject(KitchenObjects kitchenObjects, IKitchenObjectParent kitchenObjectParent)
+    {
+        Transform kitchenObjectTransfrom = Instantiate(kitchenObjects.Prefab);
+        KitchenObject kitchenObject = kitchenObjectTransfrom.GetComponent<KitchenObject>();
+        kitchenObject.SetKitchenObjectParent(kitchenObjectParent);
+        return kitchenObject;
     }
 
 
