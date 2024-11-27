@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3747864208880877371}
   - component: {fileID: 6471811369552916643}
   m_Layer: 6
-  m_Name: Image
+  m_Name: BarImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 3105375654987643878}
   - component: {fileID: 2047582706477978242}
   - component: {fileID: 410814835661619862}
+  - component: {fileID: 2094994610372629493}
   m_Layer: 6
   m_Name: ProgressBar
   m_TagString: Untagged
@@ -191,6 +192,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d692cef24c9e947a31583fb04e510d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cuttingCounter: {fileID: 7543224297481252641}
+  _barImage: {fileID: 6471811369552916643}
+--- !u!114 &2094994610372629493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3143683647947601846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e440d910d60954fadf7d482b69a358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mode: 2
 --- !u!1 &7154271594636245436
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,8 +566,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4589716710238282922, guid: d72bee846803d074784ffb8f64e993ca, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5150186101822475501}
   m_SourcePrefab: {fileID: 100100000, guid: d72bee846803d074784ffb8f64e993ca, type: 3}
+--- !u!1 &2245337003510059546 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4589716710238282922, guid: d72bee846803d074784ffb8f64e993ca, type: 3}
+  m_PrefabInstance: {fileID: 2348901106109429424}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5150186101822475501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2245337003510059546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9dfddc57aad454488dbd5010b6758f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cuttingCounter: {fileID: 7543224297481252641}
 --- !u!4 &2245337003510059547 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4589716710238282923, guid: d72bee846803d074784ffb8f64e993ca, type: 3}
