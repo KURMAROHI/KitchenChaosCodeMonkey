@@ -2,7 +2,7 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class StoveCounter : BaseCounter
+public class StoveCounter : BaseCounter, IHasProgress
 {
     [SerializeField] private FryingRecipeSO[] _fryingRecipeSoArray;
     [SerializeField] private BurningRecipeSO[] _burningRecipeSoArray;
@@ -17,6 +17,9 @@ public class StoveCounter : BaseCounter
     {
         public State state;
     }
+
+    public event EventHandler<IHasProgress.OnProgreessChangedEventArgs> OnProgress_Changed;
+
 
     private void Start()
     {
@@ -33,6 +36,10 @@ public class StoveCounter : BaseCounter
                 if (HasKitchenObject())
                 {
                     _fryingTimer += Time.deltaTime;
+                    OnProgress_Changed?.Invoke(this, new IHasProgress.OnProgreessChangedEventArgs
+                    {
+                        ProgreessNormalized = _fryingTimer / _fryingRecipeSo.FryingTimeMax
+                    });
                     if (_fryingTimer >= _fryingRecipeSo.FryingTimeMax)
                     {
                         _fryingTimer = 0;
@@ -45,6 +52,9 @@ public class StoveCounter : BaseCounter
                         {
                             state = _state
                         });
+
+
+
                     }
                 }
                 break;
@@ -52,6 +62,10 @@ public class StoveCounter : BaseCounter
                 if (HasKitchenObject())
                 {
                     _burningTimer += Time.deltaTime;
+                    OnProgress_Changed?.Invoke(this, new IHasProgress.OnProgreessChangedEventArgs
+                    {
+                        ProgreessNormalized = _burningTimer / _burningRecipeSo.BurningTimeMax
+                    });
                     if (_burningTimer >= _burningRecipeSo.BurningTimeMax)
                     {
                         _burningTimer = 0;
@@ -61,6 +75,11 @@ public class StoveCounter : BaseCounter
                         OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
                         {
                             state = _state
+                        });
+
+                        OnProgress_Changed?.Invoke(this, new IHasProgress.OnProgreessChangedEventArgs
+                        {
+                            ProgreessNormalized = 0
                         });
                     }
                 }
@@ -90,6 +109,11 @@ public class StoveCounter : BaseCounter
                     {
                         state = _state
                     });
+
+                    OnProgress_Changed?.Invoke(this, new IHasProgress.OnProgreessChangedEventArgs
+                    {
+                        ProgreessNormalized = _fryingTimer / _fryingRecipeSo.FryingTimeMax
+                    });
                     // CuttingRecipeSO cuttingRecipeSO = GettingCuttinRecipeWithInput(GetKitchenObject().GetKitchenObjectSO());
 
 
@@ -115,6 +139,11 @@ public class StoveCounter : BaseCounter
                 OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
                 {
                     state = _state
+                });
+
+                OnProgress_Changed?.Invoke(this, new IHasProgress.OnProgreessChangedEventArgs
+                {
+                    ProgreessNormalized = 0
                 });
 
             }
