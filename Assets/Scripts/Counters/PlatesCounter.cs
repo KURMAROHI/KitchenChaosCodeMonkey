@@ -11,6 +11,7 @@ public class PlatesCounter : BaseCounter
 
     public event EventHandler OnPlatesSpawned;
     public event EventHandler OnPlatesRemoved;
+    
 
 
     private void Update()
