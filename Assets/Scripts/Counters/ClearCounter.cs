@@ -26,8 +26,10 @@ public class ClearCounter : BaseCounter
             if (player.HasKitchenObject())
             {
                 //player has kitchen object so player cant carry 2 objects
+                Debug.Log("Player has kitechen object");
                 if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject))
                 {
+                    Debug.LogError("Player  carrying plate");
                     //player is holding plate 
                     if (plateKitchenObject.TryAddIngredient(GetKitchenObject().GetKitchenObjectSO()))
                     {
@@ -37,9 +39,10 @@ public class ClearCounter : BaseCounter
                 else
                 {
                     //player is not carrying plate we will check plate in on table then we can drop valid items on plate
+                    Debug.Log("Player not carrying plate:" +GetKitchenObject().TryGetPlate(out plateKitchenObject));
                     if (GetKitchenObject().TryGetPlate(out plateKitchenObject))
                     {
-                        if (plateKitchenObject.TryAddIngredient(GetKitchenObject().GetKitchenObjectSO()))
+                        if (plateKitchenObject.TryAddIngredient(player.GetKitchenObject().GetKitchenObjectSO()))
                         {
                             player.GetKitchenObject().DestroySelf();
                         }
