@@ -13,5 +13,5 @@ Kitchen Chaos is a 3D cooking game developed in Unity using C#. It follows best 
 
 ## Getting Started
 1. Clone the repo
-2. Open the project in Unity 2022.3 LTS or higher
+2. Open the project in Unity 6
 3. Press Play and start cooking!
